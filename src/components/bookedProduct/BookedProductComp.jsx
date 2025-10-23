@@ -79,7 +79,7 @@ const BookedProductComp = () => {
                         <div class="bill-header">
                             <h1>Product Bill</h1>
                             <p><strong>Product Name:</strong> ${product.product.name}</p>
-                            <p><strong>Booked By:</strong> ${product.user.userName}</p>
+                            <p><strong>Booked By:</strong> ${product.user?.userName}</p>
                         </div>
                         <div class="bill-info">
                             <p><strong>Price:</strong> Rs: ${product.price}</p>
@@ -215,7 +215,7 @@ const BookedProductComp = () => {
                 </div>
             </div>
 
-            {/* Loading and Error Handling */}
+            {/* Loading and Error Handling *
             {loading && <LoadingSpinner />}
             {error && <div className="error">{error}</div>}
 
@@ -223,12 +223,14 @@ const BookedProductComp = () => {
             <div className="product-list">
                 {bookedProducts?.length > 0 ? (
                     bookedProducts.map((product, index) => (
+                        
                         <div key={index} className="product-item">
+                          
                             <div className="product-info">
                                 <h3>{product.productName}</h3>
-                                <p>Booked by: {product.user.userName}</p>
+                                <p>Booked by: {product.user?.userName}</p>
                                 <p>Total Items: {product.totalItems}</p>
-                                <p>Product Name: {product.product.name}</p>
+                                <p>Product Name: {product.product?.name}</p>
                                 <p>Status: {product.status}</p>
                             </div>
                             <div className="product-price">
@@ -279,7 +281,7 @@ const BookedProductComp = () => {
                                         className="status-btn"
                                         onClick={() => generateTotalBill(product.user._id, product.status)}
                                     >
-                                        <FaCheckCircle /> Generate total Bill for {product.user.userName}
+                                        <FaCheckCircle /> Generate total Bill for {product.user?.userName}
                                     </button>
                                 </div>
                             )}
